@@ -34,4 +34,7 @@ nosetests.xml
 .mr.developer.cfg
 .project
 .pydevproject
+<<<<<<< HEAD
 venv
+=======
+>>>>>>> 3141284667f1c7505a3f24b75285e22ba4bfa3e0
