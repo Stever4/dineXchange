@@ -1,5 +1,5 @@
 {% include 'header.html' %}
-
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
     <div class="row" style="text-align:centered">
     <h1 id="location"></h1>
 
@@ -53,8 +53,10 @@
     {
         var x = document.getElementById("dropdown");
         var sellRef = new Firebase('https://dxc.firebaseio.com/sell');
-        sellRef.once('value', function(locationsSnapshot)
-        {
+        sellRef.on('value', function(locationsSnapshot)
+        {   
+            $("#dropdown").empty();
+
             locationsSnapshot.forEach(function(locationSnapshot)
             {
                 var location = locationSnapshot.child('location').val();
