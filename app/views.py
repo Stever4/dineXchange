@@ -23,27 +23,21 @@ def index():
             return render_template("index.html", error="authenticate")
     return render_template("index.html")
 
-@auth.required
 @app.route('/home')
 def home():
     return render_template("home.html")
 
-@auth.required
 @app.route('/chat')
 def chat():
     return render_template('agree.html', user=getAndrewID(g.user))
-
-@auth.required
 @app.route('/buy')
 def buy():
     return render_template("buy.html", user=getAndrewID(g.user))
 
-@auth.required
 @app.route('/sell')
 def sell():
     return render_template("sell.html", user=getAndrewID(g.user))
 
-@auth.required
 @app.route('/bargain')
 def bargain():
     return render_template('bargain.html')
@@ -52,13 +46,12 @@ def bargain():
 def about():
     return render_template("about.html")
 
-@auth.required
 @app.route('/users')
 def users():
+    print "HIII"
     userList = User.query.order_by('id desc')
     return render_template("users.html", userList = userList)
 
-@auth.required
 @app.route('/map')
 def map():
     return render_template("map.html")
