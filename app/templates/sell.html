@@ -25,8 +25,9 @@
 	document.getElementById("location").innerHTML = "";
 	}
 	function waitForMatch()
-	{
-		var otherRootRef = new Firebase('https://dxc.firebaseio.com/bargains/'+ '{{user}}/'+room);
+	{	
+
+		var otherRootRef = new Firebase('https://dxc.firebaseio.com/bargains/'+ '{{user}}/room");
     	otherRootRef.on('value', function(dataSnapshot)
     	{
     		if (snapshot.val() != null){
