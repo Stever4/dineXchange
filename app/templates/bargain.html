@@ -1,0 +1,39 @@
+{% include 'header.html' %}
+<script type = 'text/javascript'>
+window.onload = getOffer();
+
+function sendOffer(){
+    console.log("Hello");
+    var money = document.getElementById('offer').value;
+    var myRootRef = new Firebase('https://dxc.firebaseio.com/sell/test');
+    myRootRef.child('offer').set(money);
+
+}
+
+function getOffer(){
+    var otherRootRef = new Firebase('https://dxc.firebaseio.com/sell/test');
+    otherRootRef.on('value', function(snapshot){
+            if(snapshot.val() != null){
+                var money = snapshot.val()['offer'];
+                console.log("Initial offer"+money);
+                document.getElementById('otherOffer').innerHTML = "Other offer:$ "+money;
+        }
+    })
+    // otherRootRef.on('child_changed', function(snapshot){
+    //     var money = snapshot.val();
+    //     console.log("Offer changed"+money);
+    //     document.getElementById('otherOffer').innerHTML = "Other offer:$ "+money;
+    // })
+}
+
+</script>
+
+<div style="text-align: center;">
+    <div>
+        <label>My Offer: $</label>
+        <input type="text" id="offer"/>
+        <a class = "btn btn-lg btn-primary" onclick="return sendOffer()">Send offer</a>
+    </div>
+    <div id="otherOffer">Other offer:$</div>
+</div>
+{% include 'footer.html' %}

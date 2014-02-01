@@ -41,6 +41,10 @@ def buy():
 def sell():
     return render_template("sell.html", user=g.user)
 
+@app.route('/bargain')
+def bargain():
+    return render_template('bargain.html')
+
 @app.route('/about')
 def about():
     return render_template("about.html")
