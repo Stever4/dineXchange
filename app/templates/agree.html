@@ -1,0 +1,37 @@
+{% include 'header.html' %}
+
+<script src = "jQuery.js"></script>
+<script type = 'text/javascript'>
+
+//Bulk of code taken from https://www.firebase.com/tutorial/#session/qqdzioti363
+
+var messagesRef = new Firebase('https://dxc.firebase.com/chat/');
+
+  // When the user presses enter on the message input, write the message to firebase.
+  $('#message').keypress(function (input) {
+    if (input.keyCode == 13) {
+      var name = $('#name').val();
+      var text = $('#message').val();
+      messagesRef.push({name:name, text:text});
+      $('#message').val('');
+    }
+  });
+
+  // Add a callback that is triggered for each chat message.
+  messagesRef.limit(10).on('child_added', function (snapshot) {
+    var input = snapshot.val();
+    $('<div/>').text(input.text).prepend($('<em/>')
+      .text(input.name+': ')).appendTo($('#chat'));
+    $('#chat')[0].scrollTop = $('#chat')[0].scrollHeight;
+  });
+
+}
+</script>
+
+<body>
+    <div id="chat">
+        <input type='text' id='name' placeholder='Name'>
+        <input type='text' id='message' placeholder='Message...'>
+    </div>
+</body>
+{% include 'footer.html' %}

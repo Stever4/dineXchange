@@ -1,11 +1,13 @@
 {% include 'header.html' %}
-<!DOCTYPE html>
-<div style="text-align: center;">
-<p>
-	<a class="btn btn-xlg btn-primary" class = '.col-xs-6 .col-md-4' href="/login">Login</a>
-</p>
-<p>
-	<a class="btn btn-xlg btn-primary" class = '.col-xs-6 .col-md-4' href="/about">About</a>
-    </p>
+
+{% if error %}
+<p> This service is only available for CMU students, please authenticate with <a href="http://email.cmu.edu/">CMU Google Apps</a>.</p>
+{% endif %}
+<div class="row">
+	<a class="btn btn-xlg btn-primary" href="/login">Login</a>
 </div>
-{% include 'footer.html' %}
+<div class="row">
+	<a class="btn btn-xlg btn-primary" href="/about">About</a>
+</div>
+
+{% include 'noaboutfooter.html' %}
