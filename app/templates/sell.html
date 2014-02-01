@@ -28,8 +28,8 @@
 	{
 	var otherRootRef = new Firebase('https://dxc.firebaseio.com/bargains/'+ '{{user}}');
     otherRootRef.on('value', function(snapshot){
-    		var roomSnapshot = dataSnapshot.child('room');
-            if(roomSnapshot.val() != null){
+    		var snapshot = otherRootRef.child('room');
+            if(snapshot.val() != null){
                 var room = snapshot.val();
                 window.location = "/bargain?room="+room
         	}
