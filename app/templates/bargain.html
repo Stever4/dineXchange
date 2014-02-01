@@ -34,23 +34,19 @@ function getOffer(){
                 document.getElementById('otherOffer').innerHTML = "Offer for " + food + "...";
                 if(!isNaN(snapshot.val()['offer']))
                 {
-<<<<<<< HEAD
+
                     var money = snapshot.val()['offer'];
 
                     console.log("Initial offer"+money);
-=======
-                    var money = snapshot.val()['offer'];                    
->>>>>>> 8eb5bc0315a7e70407dcf36db6b93613ede8603d
+
                     document.getElementById('otherOffer').innerHTML = "Offer for " + food + ": $"+money ;
                     document.getElementById("agreeButton").innerHTML = "Agree";
                     otherSent = true;
                 }
-<<<<<<< HEAD
+
                 if(snapshot.val()['agreed']){
                     console.log("Testing");
-=======
-                if(snapshot.val()['agreed']){                   
->>>>>>> 8eb5bc0315a7e70407dcf36db6b93613ede8603d
+
                     var db = new Firebase('https://dxc.firebaseio.com/chat/'+room);
                     db.remove();
                     window.location = '/chat?room='+room;
