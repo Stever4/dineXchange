@@ -31,8 +31,9 @@ function getOffer(){
                 if(!isNaN(snapshot.val()['offer']))
                 {
                     var money = snapshot.val()['offer'];
+                    var food = snapshot.val()['food']
                     console.log("Initial offer"+money);
-                    document.getElementById('otherOffer').innerHTML = "Other offer:"+money;
+                    document.getElementById('otherOffer').innerHTML = "Offer for " + food + ": "+money ;
                     document.getElementById("agreeButton").innerHTML = "Agree";
                     otherSent = true;
                 }
@@ -72,12 +73,12 @@ function agree(){
       <span class="input-group-btn">
         <button class="btn btn-default" onclick="return sendOffer()" type="button">Send Offer</button>
       </span>
-    </div><!-- /input-group -->
+    </div>
   </div>
   <div id="bargain" class="input-group">
-    <p>
-    <span class="label label-default" id="otherOffer">Other offer...</span>
-</p>
+    
+    <h1 class="text" id="otherOffer"></h1>
+
     <a class = "btn btn-lg btn-primary" onclick="return agree()" id = "agreeButton">Waiting for agreement...</a>
 </div>
 </div>
