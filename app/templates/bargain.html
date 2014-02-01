@@ -17,6 +17,9 @@ function sendOffer(){
         document.getElementById('agreeButton').innerHTML = "Waiting for agreement...";
         otherSent = false;
     }
+    else{
+        alert("Please enter a number!");
+    }
     document.getElementById('offer').value = "";
 
 }
@@ -27,14 +30,14 @@ function getOffer(){
     room = room.substring(6);
     var otherRootRef = new Firebase('https://dxc.firebaseio.com/bargains/'+room);
     otherRootRef.on('value', function(snapshot){
-            console.log(snapshot.val());
+            console.log(snapshot.val()['offer']);
             if(snapshot.val() != null){
                 var food = snapshot.val()['food']
                 document.getElementById('otherOffer').innerHTML = "Offer for " + food + "...";
+                console.log(snapshot.val()['offer']);
                 if(!isNaN(snapshot.val()['offer']))
                 {
-                    var money = snapshot.val()['offer'];
-                    
+                    var money = snapshot.val()['offer'];                    
                     console.log("Initial offer"+money);
                     document.getElementById('otherOffer').innerHTML = "Offer for " + food + ": $"+money ;
                     document.getElementById("agreeButton").innerHTML = "Agree";
