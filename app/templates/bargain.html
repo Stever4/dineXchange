@@ -47,6 +47,9 @@ function getOffer(){
 }
 
 function agree(){
+    var room = window.location;
+    room = room.search; 
+    room = room.substring(6);
     var agreementRef = new Firebase('https://dxc.firebaseio.com/bargains/'+room)
     if(otherSent){
         agreed = true;
