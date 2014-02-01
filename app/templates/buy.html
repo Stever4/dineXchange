@@ -2,7 +2,6 @@
 <div style="text-align: center;">
 	<h1 id="location"></h1>
 	<p>
-	<a class="btn btn-xlg btn-primary" onclick='return checkIn()'>Check In</a>
 	<script type='text/javascript'>
 
 	function checkOut()
@@ -15,6 +14,17 @@
 	document.getElementById("location").innerHTML = "";
 	}
 
+	function checkOut()
+	{
+	var el = document.getElementById('dropdown');
+    var location = el.options[el.selectedIndex].innerHTML;
+	var myRootRef = new Firebase('https://dxc.firebaseio.com/sell/' + location);
+	myRootRef.child('location').set(null);
+	myRootRef.child('time').set(null);
+	document.getElementById("location").innerHTML = "";
+	}
+
+
 </script>
     </p>
     <p>
@@ -24,10 +34,14 @@
 	<p>
 <a class="btn btn-xlg btn-primary" onclick='return checkOut()'>Check Out</a>
 	</p>
-<div class="btn-group btn-group-lg">
-  <a type="button" class="btn btn-default" href="#">@ Skibo</a>
-  <a type="button" class="btn btn-default" href="/sell/checkin">Orders</a>
-</div>
+	<div class="col-lg-6">
+    <div class="input-group">
+      <input type="text" class="form-control">
+      <span class="input-group-btn">
+        <button class="btn btn-default" type="button">Go!</button>
+      </span>
+    </div><!-- /input-group -->
+  </div><!-- /.col-lg-6 -->
 </div>
 <script type='text/javascript'>
 	window.onload = loadShit();
