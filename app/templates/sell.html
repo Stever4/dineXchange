@@ -29,6 +29,7 @@
 	var otherRootRef = new Firebase('https://dxc.firebaseio.com/bargains/'+ '{{user}}');
     otherRootRef.on('value', function(dataSnapshot)
     	{
+    		alert("hi");
     		if (dataSnapshot.hasChild('room')){
     			alert("hi");
     			var room = dataSnapshot.child('room');
