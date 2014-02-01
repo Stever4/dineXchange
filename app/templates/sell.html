@@ -7,15 +7,16 @@
 
 	function check()
 	{
-    window.alert("sometext");
-    var myRootRef = new Firebase('https://dxc.firebaseio.com/');
-myRootRef.set('Hello World!');
+	 var el = document.getElementById('dropdown');
+    var location = el.options[el.selectedIndex].innerHTML;
+    var myRootRef = new Firebase('https://dxc.firebaseio.com/sell');
+	myRootRef.child('newAndrew').set(location);
 	}
 
 </script>
     </p>
     <p>
-	<select class="form-control">
+	<select class="form-control" id="dropdown">
   <option>Skibo</option>
   <option>Resnik</option>
   <option>Asiana</option>
