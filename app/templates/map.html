@@ -64,7 +64,7 @@ var places = [
   function setMarkers(map, locations) {
      var db = new Firebase('https://dxc.firebaseio.com/sell');
     var query = db.limit(50);
-    query.on('value', function(snapshot){      
+    query.on('value', function(snapshot){
     var people = snapshot.val();
       for (var i = 0; i < locations.length; i++) {
       var place = locations[i];
