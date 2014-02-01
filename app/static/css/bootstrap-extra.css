@@ -28,3 +28,15 @@ h1 {
     color: white;
     font-size: 14pt;
 }
+
+.abouttldr {
+    color: red;
+    font-size: 14pt;
+}
+
+p {
+        margin-top: 0px;
+		margin-right: 150px;
+		margin-bottom: 15px;
+		margin-left: 150px;
+}
