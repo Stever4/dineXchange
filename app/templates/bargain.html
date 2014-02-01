@@ -81,9 +81,9 @@ function keyPressed(event){
 
 <div style="text-align: center;">
 
-<div class="col-lg-6">
+<div class="row">
 
-    <div id="bargain" class="input-group">
+    <div id="food" class="input-group">
         <span class="input-group-addon">My Offer: $</span>
       <input type="text" id="offer" class="form-control" onkeypress = 'keyPressed(event)'>
       <span class="input-group-btn">
@@ -91,11 +91,13 @@ function keyPressed(event){
       </span>
     </div>
   </div>
+<div class = "row">
   <div id="bargain" class="input-group">
 
     <h1 class="text" id="otherOffer"></h1>
 
     <a class = "btn btn-lg btn-primary" onclick="return agree()" id = "agreeButton">Waiting for agreement...</a>
+</div>
 </div>
 </div>
 {% include 'footer.html' %}
