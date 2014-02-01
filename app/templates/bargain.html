@@ -2,11 +2,8 @@
 <script type = 'text/javascript'>
 window.onload = getOffer();
 var otherSent = false;
-<<<<<<< HEAD
-=======
 var agreed = false;
 
->>>>>>> 9cf03e2e4f303067f73041f1e015a7985cc352fb
 function sendOffer(){
     console.log("Hello");
     var money = document.getElementById('offer').value;
@@ -49,7 +46,7 @@ function getOffer(){
 }
 
 function agree(){
-    var agreementRef = new Firebase('https://dxc.firebaseio.com/sell/test')
+    var agreementRef = new Firebase('https://dxc.firebaseio.com/bargains/'+room)
     if(otherSent){
         agreed = true;
         window.open('/chat','_self');
