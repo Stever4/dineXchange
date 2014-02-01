@@ -28,11 +28,12 @@ function getOffer(){
     otherRootRef.on('value', function(snapshot){
             console.log(snapshot.val());
             if(snapshot.val() != null){
+                var food = snapshot.val()['food']
                 document.getElementById('otherOffer').innerHTML = "Offer for " + food + "...";
                 if(!isNaN(snapshot.val()['offer']))
                 {
                     var money = snapshot.val()['offer'];
-                    var food = snapshot.val()['food']
+                    
                     console.log("Initial offer"+money);
                     document.getElementById('otherOffer').innerHTML = "Offer for " + food + ": $"+money ;
                     document.getElementById("agreeButton").innerHTML = "Agree";
