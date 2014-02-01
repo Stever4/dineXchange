@@ -145,6 +145,12 @@ p {
 #message{
     color: black;
     margin-left:calc(10px);
+    width:200px;
+}
+#chatborder{
+  border:white 2px solid;
+  width :500px;
+  margin-left: 10px;
 }
 }
 
@@ -154,7 +160,11 @@ p {
 @media screen and (min-width:1000px)
 {
 
-
+#chatborder{
+  border:white 2px solid;
+  width :500px;
+  margin-left: calc(50% - 250px);
+}
 #chat{
     height: 400px;
     overflow: auto;
@@ -171,6 +181,7 @@ p {
 #message{
     color: black;
     margin-left:calc(50% - 200px);
+    width:200px;
 }
 .btn-xlg {
     width: 200px !important;
