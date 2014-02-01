@@ -1,4 +1,5 @@
-@media screen and (min-width:400px)
+@media screen and (min-width:320px)
+and (max-device-width : 568px) {
 .btn-xlg {
     width: 200px !important;
     height: 60px !important;
@@ -108,7 +109,7 @@ p {
     margin-bottom: 15px;
     text-indent:50px;
 }
-
+}
 @media screen and (min-width:1000px)
 .btn-xlg {
     width: 200px !important;
