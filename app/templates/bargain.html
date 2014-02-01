@@ -35,11 +35,10 @@ function getOffer(){
                     document.getElementById("agreeButton").innerHTML = "Agree";
                     otherSent = true;
                 }
-                else{
-                    if(snapshot.val()['agreed']){
-                        console.log("Testing");
-                        window.location = '/chat?room='+room;
-                    }
+                else if(snapshot.val()['agreed']){
+                    console.log("Testing");
+                    window.location = '/chat?room='+room;
+                    
                 }
 
         }
