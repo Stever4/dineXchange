@@ -13,11 +13,17 @@
     overflow: auto;
     margin-top: 5px;
     color: white;
+    margin-left:calc(50% - 100px);
 
 }
 
 #details{
     color: white;
+    margin-left:calc(50% - 100px);
+}
+#message{
+    color: white;
+    margin-left:calc(50% - 100px);
 }
     </style>
 
@@ -31,7 +37,7 @@
 $(function() {
     var room = window.location;
     console.log("Foo");
-    room = room.search; 
+    room = room.search;
     room = room.substring(6);
     var db = new Firebase('https://dxc.firebaseio.com/chat/'+room);
     db.on('child_added', function(snapshot) {

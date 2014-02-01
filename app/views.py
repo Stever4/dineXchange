@@ -30,6 +30,7 @@ def home():
 @app.route('/chat')
 def chat():
     return render_template('agree.html', user=getAndrewID(g.user))
+
 @app.route('/buy')
 def buy():
     return render_template("buy.html", user=getAndrewID(g.user))
@@ -48,7 +49,6 @@ def about():
 
 @app.route('/users')
 def users():
-    print "HIII"
     userList = User.query.order_by('id desc')
     return render_template("users.html", userList = userList)
 

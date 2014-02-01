@@ -127,6 +127,10 @@ p {
     margin-bottom: 15px;
     text-indent:50px;
 }
+
+#details {
+  margin-left:calc(50% - 100px);
+}
 }
 
 
@@ -134,6 +138,9 @@ p {
 
 @media screen and (min-width:1000px)
 {
+#details {
+  margin-left:calc(50% - 100px);
+}
 .btn-xlg {
     width: 200px !important;
     height: 60px !important;
