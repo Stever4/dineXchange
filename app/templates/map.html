@@ -1,4 +1,5 @@
 {% include 'header.html' %}
+<!-- Hello -->
 <script type="text/javascript"
   src="https://maps.googleapis.com/maps/api/js?sensor=false">
 </script>
@@ -61,21 +62,34 @@ var places = [
     });
   }
   function setMarkers(map, locations) {
-  for (var i = 0; i < locations.length; i++) {
-    var place = locations[i];
-    var myLatLng = new google.maps.LatLng(place[1], place[2]);
+     var db = new Firebase('https://dxc.firebaseio.com/sell');
+    var query = db.limit(50);
+    query.on('value', function(snapshot){      
+    var people = snapshot.val();
+      for (var i = 0; i < locations.length; i++) {
+      var place = locations[i];
+      var peopleAtLocation = 0;
 
+      for(key in people)
+        if(people[key].location === locations[i][0])
+          peopleAtLocation++;
+  // for (var i = 0; i < locations.length; i++) {
+  //   var place = locations[i];
+  //   var myLatLng = new google.maps.LatLng(place[1], place[2]);
+    var myLatLng = new google.maps.LatLng(place[1], place[2]);
+    console.log(peopleAtLocation);
     var mapLabel = new MarkerWithLabel({
            position: myLatLng,
        draggable: true,
        raiseOnDrag: true,
        map: map,
-       labelContent: "42",
+       labelContent: ""+peopleAtLocation,
        labelAnchor: new google.maps.Point(22, 0),
        labelClass: "labels", // the CSS class for the label
        labelStyle: {opacity: 1.0}
          });
-}
+  }
+});
   }
   google.maps.event.addDomListener(window, 'load', initialise); // Execute our 'initialise' function once the page has loaded.
 </script>
