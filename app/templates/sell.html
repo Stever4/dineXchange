@@ -27,7 +27,7 @@
 	function waitForMatch()
 	{	
 
-		var otherRootRef = new Firebase('https://dxc.firebaseio.com/bargains/'+ '{{user}}/room');
+		var otherRootRef = new Firebase('https://dxc.firebaseio.com/'+ '{{user}}/room');
     	otherRootRef.on('value', function(snapshot)
     	{
     		if (snapshot.val() != null){
