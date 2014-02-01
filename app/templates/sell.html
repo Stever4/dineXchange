@@ -28,11 +28,10 @@
 	{	
 
 		var otherRootRef = new Firebase('https://dxc.firebaseio.com/sell/'+ '{{user}}/room');
-		alert('https://dxc.firebaseio.com/sell/'+ '{{user}}/room')
     	otherRootRef.on('value', function(snapshot)
     	{
     		if (snapshot.val() != null){
-    			var room = dataSnapshot.val();
+    			var room = snapshot.val();
                 window.location = "/bargain?room="+room;
             }
     	})
