@@ -1,0 +1,31 @@
+{% include 'header.html' %}
+<div style="text-align: center;">
+	<h1>CURRENTLY @ SKIBO</h1>
+	<p>
+	<a class="btn btn-xlg btn-primary" onclick='return check()'>Check In</a>
+	<script type='text/javascript'>
+
+	function check()
+	{
+    window.alert("sometext");
+	}
+
+</script>
+    </p>
+    <p>
+	<select class="form-control">
+  <option>Skibo</option>
+  <option>Resnik</option>
+  <option>Asiana</option>
+  <option>The Exchange</option>
+</select>
+	</p>
+	<p>
+<a class="btn btn-xlg btn-primary" href="/sell">Check Out</a>
+	</p>
+<div class="btn-group btn-group-lg">
+  <a type="button" class="btn btn-default" href="#">@ Skibo</a>
+  <a type="button" class="btn btn-default" href="/sell/orders">Orders</a>
+</div>
+</div>
+{% include 'footer.html' %}
