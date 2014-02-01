@@ -27,6 +27,9 @@ def index():
 def home():
     return render_template("home.html")
 
+@app.route('/chat')
+def chat():
+    return render_template('agree.html')
 @app.route('/buy')
 def buy():
     return render_template("buy.html", user=getAndrewID(g.user))
