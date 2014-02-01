@@ -26,13 +26,13 @@
 	}
 	function waitForMatch()
 	{
-	var otherRootRef = new Firebase('https://dxc.firebaseio.com/bargains/'+ '{{user}}/'+room);
-    otherRootRef.on('value', function(dataSnapshot)
+		var otherRootRef = new Firebase('https://dxc.firebaseio.com/bargains/'+ '{{user}}/'+room);
+    	otherRootRef.on('value', function(dataSnapshot)
     	{
-    		if(snapshot.val() != null):
-    				var room = dataSnapshot.val();
-                	window.location = "/bargain?room="+room;
-        	}
+    		if (snapshot.val() != null){
+    			var room = dataSnapshot.val();
+                window.location = "/bargain?room="+room;
+            }
     	})
 	}
 </script>
