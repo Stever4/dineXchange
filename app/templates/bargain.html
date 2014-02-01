@@ -8,6 +8,7 @@ function sendOffer(){
     console.log("Hello");
     var money = document.getElementById('offer').value;
     if(!isNaN(money)){
+        money = Math.round(money * 100) / 100
         var room = window.location;
         room = room.search; 
         room = room.substring(6);
