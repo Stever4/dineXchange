@@ -1,23 +1,25 @@
 {% include 'header.html' %}
 
 {% if error %}
-<div id = 'error'> This service is only available for CMU students, please authenticate with <a href="http://email.cmu.edu/">CMU Google Apps</a>.</div>
-<style type = 'text/css'>
+<div class="row">
+    <div class="col-md-offset-4 col-md-4 text-center">
+This service is only available for CMU students, please authenticate with <a href="http://email.cmu.edu/">CMU Google Apps</a>.
+</div>
+</div>
 
-#error {
-    color:white;
-    margin-left:650px;
-}
-</style>
 {% endif %}
-<div class = "im-centered">
+
 <div class="row">
-	<a class="btn btn-xlg btn-primary" href="/login">Login</a>
+    <div class="myCenter">
+	<a class="btn btn-xlg btn-primary" href="/login">
+        Login</a>
 </div>
 </div>
-<div class = "im-centered">
+
 <div class="row">
-	<a class="btn btn-xlg btn-primary" href="/about">About</a>
+    <div class="myCenter">
+	<a class="btn btn-xlg btn-primary" href="/about">
+        <span>About</a>
 </div>
 </div>
 

@@ -1,5 +1,6 @@
 .btn-xlg {
-    padding: 20px 80px;
+    width: 200px !important;
+    height: 60px !important;
     font-size: 35px;
     line-height: normal;
     -webkit-border-radius: 8px;
@@ -8,6 +9,13 @@
    margin: 20px;
    position: relative;
     	}
+
+.myCenter {
+  width: 240px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
 
 .im-centered{margin:0px auto; max-width: 300px;}
 .my-fluid-container {
@@ -30,28 +38,29 @@ h1 {
 
 }
 
+.aboutFooter{
+  position:absolute;
+  bottom:5px;
+  text-align: center;
+  left: 50%;
+}
+
 .my-fluid-container{
   padding-left:15px;
   padding-right:15px;
   margin:auto;
 }
 
-#dropdown {
-    width:250px;
-    display: inline-block;
-    margin: 5px;
-}
-
-#dropdown {
-    width:250px;
-    display: inline-block;
-    margin: 5px;
+#error {
+  color:white;
+  margin-left:300px;
 }
 
 #food {
   width:250px;
   margin-left:auto;
   margin-right:auto;
+  margin-top:10px;
 }
 
 #bargain {
@@ -74,6 +83,7 @@ h1 {
 .about {
     color: white;
     font-size: 14pt;
+    text-align: justify;
 }
 
 .abouttldr {
@@ -86,4 +96,5 @@ p {
     margin-right: 150px;
     margin-bottom: 15px;
     margin-left: 150px;
+    text-indent:50px;
 }
