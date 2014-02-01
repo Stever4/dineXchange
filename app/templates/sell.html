@@ -8,6 +8,8 @@
 	function check()
 	{
     window.alert("sometext");
+    var myRootRef = new Firebase('https://dxc.firebaseio.com/');
+myRootRef.set('Hello World!');
 	}
 
 </script>
@@ -25,7 +27,7 @@
 	</p>
 <div class="btn-group btn-group-lg">
   <a type="button" class="btn btn-default" href="#">@ Skibo</a>
-  <a type="button" class="btn btn-default" href="/sell/orders">Orders</a>
+  <a type="button" class="btn btn-default" href="/sell/checkin">Orders</a>
 </div>
 </div>
 {% include 'footer.html' %}
