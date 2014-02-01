@@ -139,12 +139,12 @@ p {
 
 #details{
     color: white;
-    margin-left:calc(50px);
+    margin-left:calc(10px);
     width :300px;
 }
 #message{
     color: white;
-    margin-left:calc(50px);
+    margin-left:calc(10px);
 }
 }
 
@@ -154,14 +154,6 @@ p {
 @media screen and (min-width:1000px)
 {
 
-#chat{
-    height: 400px;
-    overflow: auto;
-    margin-top: 5px;
-    color: white;
-    margin-left:10px;
-
-}
 
 #chat{
     height: 400px;
