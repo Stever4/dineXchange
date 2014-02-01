@@ -44,7 +44,7 @@
     <span class="input-group-addon">I Want:</span>
       <input type="textarea" id="textbox" class="form-control">
       <span class="input-group-btn">
-        <a onclick='return findMatch(document.getElementById("dropdown").value,document.getElementById("textbox").value)' class="btn btn-default" type="button">Start!</a>
+        <a onclick='return findMatch(document.getElementById("dropdown").value,document.getElementById("textbox").value)' class="btn btn-default" type="button">Submit</a>
       </span>
     </div>
 
@@ -55,7 +55,7 @@
         var x = document.getElementById("dropdown");
         var sellRef = new Firebase('https://dxc.firebaseio.com/sell');
         sellRef.on('value', function(locationsSnapshot)
-        {   
+        {
             $("#dropdown").empty();
 
             locationsSnapshot.forEach(function(locationSnapshot)
