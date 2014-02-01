@@ -108,10 +108,11 @@ for(var i = 0; i < places.length; i++){
     minDistance = distance;
     minLocation = i;
   }
+}
+
   console.log(minLocation);
   console.log(places[minLocation]);
   console.log("Closest:"+places[minLocation][0]);
-}
 
 function makeLabel(latitude, longitude){
   var youLabel = new MarkerWithLabel({
