@@ -26,6 +26,7 @@
 <div id="map-canvas" style="height:600px; width:1000px;"></div>
 <script>
 var map;
+var peopleAtLocation = new Array();
 var places = [
       ['The UC',40.443452468900105, -79.94170546531677 ],
       ['Resnik',40.44253796657429, -79.939945936203],
@@ -68,23 +69,19 @@ var places = [
     query.on('value', function(snapshot){
     var people = snapshot.val();
       for (var i = 0; i < locations.length; i++) {
-      var place = locations[i];
-      var peopleAtLocation = 0;
-
+      peopleAtLocation[i] = 0;
+      var place = locations[i];    
       for(key in people)
         if(people[key].location === locations[i][0])
-          peopleAtLocation++;
-  // for (var i = 0; i < locations.length; i++) {
-  //   var place = locations[i];
-  //   var myLatLng = new google.maps.LatLng(place[1], place[2]);
+          peopleAtLocation[i]++;
     var myLatLng = new google.maps.LatLng(place[1], place[2]);
-    console.log(peopleAtLocation);
+    console.log(peopleAtLocation[i]);
     var mapLabel = new MarkerWithLabel({
            position: myLatLng,
        draggable: false,
        raiseOnDrag: true,
        map: map,
-       labelContent: ""+peopleAtLocation,
+       labelContent: ""+peopleAtLocation[i],
        labelAnchor: new google.maps.Point(22, 0),
        labelClass: "labels", // the CSS class for the label
        labelStyle: {opacity: 1.0},
@@ -101,15 +98,25 @@ var places = [
 
 
 function findClosestFood(latitude, longitude){
-  var minDistance = 0;
+var closestFoodArray = new Array();
+var minDistance = 0;
 var minLocation = -1;
 for(var i = 0; i < places.length; i++){
   var otherLatitude = places[i][1];
   var otherLongitude = places[i][2];
   var distance = Math.sqrt(Math.pow(latitude-otherLatitude,2)+Math.pow(longitude-otherLongitude,2));
   if(distance < minDistance || minLocation === -1){
+    if(peopleAtLocation[i] > 0){
+      closestFoodArray = places[i][0] + closestFoodArray;
+    }
+    else{
+      closestFoodArray = closestFoodArray + places[i][0];
+    }
     minDistance = distance;
     minLocation = i;
+  }
+  else{
+    closestFoodArray = closestFoodArray + places[i][0];
   }
 }
 console.log(places[minLocation][0]);
