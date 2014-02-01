@@ -26,8 +26,9 @@ function getOffer(){
     room = room.substring(6);
     var otherRootRef = new Firebase('https://dxc.firebaseio.com/bargains/'+room);
     otherRootRef.on('value', function(snapshot){
+            console.log(snapshot.val());
             if(snapshot.val() != null){
-                if(snapshot.val()['offer'] != null)
+                if(!isNaN(snapshot.val()['offer']))
                 {
                     var money = snapshot.val()['offer'];
                     console.log("Initial offer"+money);
@@ -35,10 +36,10 @@ function getOffer(){
                     document.getElementById("agreeButton").innerHTML = "Agree";
                     otherSent = true;
                 }
-                else{
-                    if(snapshot.val()['agreed']){
-                        window.open('/chat','_self');
-                    }
+                if(snapshot.val()['agreed']){
+                    console.log("Testing");
+                    window.location = '/chat?room='+room;
+                    
                 }
 
         }
@@ -46,18 +47,20 @@ function getOffer(){
 }
 
 function agree(){
+    var room = window.location;
+    room = room.search; 
+    room = room.substring(6);
     var agreementRef = new Firebase('https://dxc.firebaseio.com/bargains/'+room)
     if(otherSent){
         agreed = true;
-        window.open('/chat','_self');
+        console.log("Test");
+        window.location = '/chat?room='+room;
     }
     agreementRef.child('agreed').set(agreed);
 
 }
 
 </script>
-
-
 
 <div style="text-align: center;">
 

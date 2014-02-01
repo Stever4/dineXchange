@@ -29,7 +29,7 @@ def home():
 
 @app.route('/chat')
 def chat():
-    return render_template('agree.html')
+    return render_template('agree.html', user=getAndrewID(g.user))
 @app.route('/buy')
 def buy():
     return render_template("buy.html", user=getAndrewID(g.user))

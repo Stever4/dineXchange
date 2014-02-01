@@ -2,7 +2,6 @@
 
 
 <body>
-    <input type='text' id='name' placeholder='Name'>
     <input type='text' id='message' placeholder='Message...'>
     <div id="chat">
     </div>
@@ -12,6 +11,7 @@
     height: 400px;
     overflow: auto;
     margin-top: 5px;
+    color: white;
 
 }
     </style>
@@ -24,10 +24,10 @@
 //Bulk of code taken from will crichton github
 
 $(function() {
-    var db = new Firebase('https://dxc.firebaseio.com/chat');
-    db.remove();
-    var db = new Firebase('https://dxc.firebaseio.com/chat');
-    
+    var room = window.location;
+    room = room.search; 
+    room = room.substring(6);
+    var db = new Firebase('https://dxc.firebaseio.com/chat/'+room);    
     db.on('child_added', function(snapshot) {
         var val = snapshot.val();
         var $message = $('<div class="message"><b>' + val.name + '</b>: ' + val.message + '</div>');
@@ -39,7 +39,7 @@ $(function() {
     $('input#message').keypress(function(event) {
         if (event.which == 13 && $(this).val() != '') {
             db.push({
-                name: $('#name').val(),
+                name: '{{user}}',
                 message: $(this).val()
             });
             $(this).val('');

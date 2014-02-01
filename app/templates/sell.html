@@ -22,16 +22,17 @@
 	var myRootRef = new Firebase('https://dxc.firebaseio.com/sell/' + '{{user}}');
 	myRootRef.child('location').set(null);
 	myRootRef.child('time').set(null);
+	myRootRef.child('room').set(null);
 	document.getElementById("location").innerHTML = "";
 	}
 	function waitForMatch()
-	{	
-
+	{
 		var otherRootRef = new Firebase('https://dxc.firebaseio.com/sell/'+ '{{user}}/room');
     	otherRootRef.on('value', function(snapshot)
     	{
     		if (snapshot.val() != null){
     			var room = snapshot.val();
+    			checkOut();
                 window.location = "/bargain?room="+room;
             }
     	})

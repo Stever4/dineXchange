@@ -4,19 +4,14 @@
 	<p>
 
 
+<<<<<<< HEAD
 	<a class="btn btn-xlg btn-primary" onclick='return checkIn()'>Check In</a>
 </div>
+=======
+	
+>>>>>>> 807de63f794d6ee04de869b4e4d14ca133ba07d9
 	<script type='text/javascript'>
 
-	function checkOut()
-	{
-	var el = document.getElementById('dropdown');
-    var location = el.options[el.selectedIndex].innerHTML;
-	var myRootRef = new Firebase('https://dxc.firebaseio.com/sell/' + location);
-	myRootRef.child('location').set(null);
-	myRootRef.child('time').set(null);
-	document.getElementById("location").innerHTML = "";
-	}
 
 	function findMatch(place,food)
 	{
@@ -75,6 +70,7 @@
       </span>
     </div><!-- /input-group -->
   </div><!-- /.col-lg-6 -->
+<<<<<<< HEAD
   </div>
   </div>
   <div class="im-centered">
@@ -83,6 +79,8 @@
 </div>
 </div>
 
+=======
+>>>>>>> 807de63f794d6ee04de869b4e4d14ca133ba07d9
 	</p>
 
 <script type='text/javascript'>
