@@ -39,7 +39,7 @@ $(function() {
     $('input#message').keypress(function(event) {
         if (event.which == 13 && $(this).val() != '') {
             db.push({
-                name: $('#name').val(),
+                name: '{{user}}',
                 message: $(this).val()
             });
             $(this).val('');
