@@ -14,6 +14,9 @@ def isCMU(email):
 def andrewID(email):
     return email.split('@')[0]
 
+def getAndrewID(user):
+    return andrewID(getEmail(user))
+
 @app.route('/')
 def index():
     if g.user:
@@ -37,9 +40,10 @@ def home():
 def buy():
     return render_template("buy.html")
 
+
 @app.route('/sell')
 def sell():
-    return render_template("sell.html", user=g.user)
+    return render_template("sell.html", user=getAndrewID(g.user))
 
 @app.route('/bargain')
 def bargain():
