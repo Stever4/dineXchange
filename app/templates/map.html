@@ -81,43 +81,44 @@ var places = [
     console.log(peopleAtLocation);
     var mapLabel = new MarkerWithLabel({
            position: myLatLng,
-       draggable: true,
+       draggable: false,
        raiseOnDrag: true,
        map: map,
        labelContent: ""+peopleAtLocation,
        labelAnchor: new google.maps.Point(22, 0),
        labelClass: "labels", // the CSS class for the label
-       labelStyle: {opacity: 1.0}
+       labelStyle: {opacity: 1.0},
          });
   }
 });
   }
 
   //credit to mozilla developer network
-  var watchID = navigator.geolocation.getCurrentPosition(function(position) {
+  navigator.geolocation.getCurrentPosition(function(position) {
   makeLabel(position.coords.latitude, position.coords.longitude);
+  findClosestFood(position.coords.latitude, position.coords.longitude);
 });
 
-var minDistance = 0;
+
+function findClosestFood(latitude, longitude){
+  var minDistance = 0;
 var minLocation = -1;
 for(var i = 0; i < places.length; i++){
   var otherLatitude = places[i][1];
   var otherLongitude = places[i][2];
-  var distance = Math.sqrt(Math.pow(watchID[0]-otherLatitude,2)+Math.pow(watchID[1]-otherLongitude,2));
+  var distance = Math.sqrt(Math.pow(latitude-otherLatitude,2)+Math.pow(longitude-otherLongitude,2));
   if(distance < minDistance || minLocation === -1){
     minDistance = distance;
     minLocation = i;
   }
 }
-
-  console.log(minLocation);
-  console.log(places[minLocation]);
-  console.log("Closest:"+places[minLocation][0]);
+console.log(places[minLocation][0]);
+}
 
 function makeLabel(latitude, longitude){
   var youLabel = new MarkerWithLabel({
            position: new google.maps.LatLng(latitude, longitude),
-       draggable: true,
+       draggable: false,
        raiseOnDrag: true,
        map: map,
        labelContent: "You",
