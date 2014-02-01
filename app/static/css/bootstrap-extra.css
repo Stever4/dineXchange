@@ -15,11 +15,16 @@ body {
 
 h1 {
    color:white;
-   
+
 }
 
 .form-control {
     width:250px;
     display: inline-block;
     margin: 5px;
+}
+
+.about {
+    color: white;
+    font-size: 14pt;
 }
