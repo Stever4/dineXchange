@@ -27,7 +27,7 @@ function getOffer(){
     var otherRootRef = new Firebase('https://dxc.firebaseio.com/bargains/'+room);
     otherRootRef.on('value', function(snapshot){
             if(snapshot.val() != null){
-                if(snapshot.val()['offer'] != null)
+                if(!isNan(snapshot.val()['offer']))
                 {
                     var money = snapshot.val()['offer'];
                     console.log("Initial offer"+money);
