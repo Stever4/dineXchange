@@ -5,8 +5,11 @@ window.onload = getOffer();
 function sendOffer(){
     console.log("Hello");
     var money = document.getElementById('offer').value;
-    var myRootRef = new Firebase('https://dxc.firebaseio.com/sell/test');
-    myRootRef.child('offer').set(money);
+    if(!isNaN(money)){
+        var myRootRef = new Firebase('https://dxc.firebaseio.com/sell/test');
+        myRootRef.child('offer').set(money);
+    }
+    document.getElementById('offer').value = "";
 
 }
 
@@ -34,6 +37,6 @@ function getOffer(){
         <input type="text" id="offer"/>
         <a class = "btn btn-lg btn-primary" onclick="return sendOffer()">Send offer</a>
     </div>
-    <div id="otherOffer">Other offer:$</div>
+    <label id="otherOffer">Other offer:$</label>
 </div>
 {% include 'footer.html' %}
