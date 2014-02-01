@@ -25,6 +25,7 @@
 <body>
 <div id="map-canvas" style="height:600px; width:1000px;"></div>
 <script>
+var map;
 var places = [
       ['UC',40.443452468900105, -79.94170546531677 ],
       ['Resnik',40.44253796657429, -79.939945936203],
@@ -53,7 +54,7 @@ var places = [
       overviewMapControl:false, // Set to false to remove overview control
       rotateControl:false // Set to false to disable rotate control
       }
-    var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions); // Render our map within the empty div
+    map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions); // Render our map within the empty div
 
     setMarkers(map, places);
 
@@ -91,6 +92,39 @@ var places = [
   }
 });
   }
-  google.maps.event.addDomListener(window, 'load', initialise); // Execute our 'initialise' function once the page has loaded.
+
+  //credit to mozilla developer network
+  var watchID = navigator.geolocation.watchPosition(function(position) {
+  makeLabel(position.coords.latitude, position.coords.longitude);
+});
+
+var minDistance = 0;
+var minLocation = -1;
+for(var i = 0; i < places.length; i++){
+  var otherLatitude = places[i][1];
+  var otherLongitude = places[i][2];
+  var distance = Math.sqrt(Math.pow(watchID[0]-otherLatitude,2)+Math.pow(watchID[1]-otherLongitude,2));
+  if(distance < minDistance || minLocation === -1){
+    minDistance = distance;
+    minLocation = i;
+  }
+  console.log(minLocation);
+  console.log(places[minLocation]);
+  console.log("Closest:"+places[minLocation][0]);
+}
+
+function makeLabel(latitude, longitude){
+  var youLabel = new MarkerWithLabel({
+           position: new google.maps.LatLng(latitude, longitude),
+       draggable: true,
+       raiseOnDrag: true,
+       map: map,
+       labelContent: "You",
+       labelAnchor: new google.maps.Point(22, 0),
+       labelClass: "labels", // the CSS class for the label
+       labelStyle: {opacity: 1.0}
+         });}
+    google.maps.event.addDomListener(window, 'load', initialise);
+   // Execute our 'initialise' function once the page has loaded.
 </script>
 {% include 'footer.html' %}
