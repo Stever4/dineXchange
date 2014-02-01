@@ -7,9 +7,10 @@
 
 	function checkIn()
 	{
+	alert('{{user}}');
 	var el = document.getElementById('dropdown');
     var location = el.options[el.selectedIndex].innerHTML;
-    var myRootRef = new Firebase('https://dxc.firebaseio.com/sell/' + location);
+    var myRootRef = new Firebase('https://dxc.firebaseio.com/sell/' + '{{user}}');
 	myRootRef.child('location').set(location);
 	myRootRef.child('time').set(new Date().getTime());
 	document.getElementById("location").innerHTML = "Currently @ " + location;
@@ -19,7 +20,7 @@
 	{
 	var el = document.getElementById('dropdown');
     var location = el.options[el.selectedIndex].innerHTML;
-	var myRootRef = new Firebase('https://dxc.firebaseio.com/sell/' + location);
+	var myRootRef = new Firebase('https://dxc.firebaseio.com/sell/' + '{{user}}');
 	myRootRef.child('location').set(null);
 	myRootRef.child('time').set(null);
 	document.getElementById("location").innerHTML = "";

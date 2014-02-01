@@ -21,7 +21,7 @@ def buy():
 
 @app.route('/sell')
 def sell():
-    return render_template("sell.html")
+    return render_template("sell.html", user=g.user)
 
 @app.route('/about')
 def about():
