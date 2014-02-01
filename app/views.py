@@ -2,20 +2,9 @@ from flask import render_template, redirect,url_for, g
 from flask_googleauth import GoogleAuth
 from models import User, ROLE_USER, ROLE_ADMIN
 from app import app, db
+from cmu import getEmail, isCMU, andrewID, getAndrewID
 
 auth = GoogleAuth(app)
-
-def getEmail(user):
-    return user.get(u'email', None)
-
-def isCMU(email):
-    return email.split('@')[1] == 'andrew.cmu.edu'
-
-def andrewID(email):
-    return email.split('@')[0]
-
-def getAndrewID(user):
-    return andrewID(getEmail(user))
 
 @app.route('/')
 def index():
@@ -67,3 +56,8 @@ def map():
 @app.route('/login')
 def login():
     return
+
+@app.route('/logout')
+def logout():
+    auth = None
+    return redirect(url_for("index.html"))

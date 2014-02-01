@@ -2,6 +2,7 @@
 <script type = 'text/javascript'>
 window.onload = getOffer();
 var otherSent = false;
+var agreed = false;
 
 function sendOffer(){
     console.log("Hello");
@@ -20,19 +21,31 @@ function getOffer(){
     var otherRootRef = new Firebase('https://dxc.firebaseio.com/sell/test');
     otherRootRef.on('value', function(snapshot){
             if(snapshot.val() != null){
-                var money = snapshot.val()['offer'];
-                console.log("Initial offer"+money);
-                document.getElementById('otherOffer').innerHTML = "Other offer:"+money;
-                document.getElementById("agreeButton").innerHTML = "Agree";
-                otherSent = true;
+                if(snapshot.val()['offer'] != null)
+                {
+                    var money = snapshot.val()['offer'];
+                    console.log("Initial offer"+money);
+                    document.getElementById('otherOffer').innerHTML = "Other offer:"+money;
+                    document.getElementById("agreeButton").innerHTML = "Agree";
+                    otherSent = true;
+                }
+                else{
+                    if(snapshot.val()['agreed']){
+                        window.open('/chat','_self');
+                    }
+                }
+
         }
     })
 }
 
 function agree(){
+    var agreementRef = new Firebase('https://dxc.firebaseio.com/sell/test')
     if(otherSent){
-        console.log('Agreement Reached!');
+        agreed = true;
+        window.open('/chat','_self');
     }
+    agreementRef.child('agreed').set(agreed);
 
 }
 
