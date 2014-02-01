@@ -19,6 +19,7 @@ def index():
     if g.user:
         email = getEmail(g.user)
         if isCMU(email):
+            print andrewID(email)
             return render_template("home.html", andrewID = andrewID(email))
         else:
             return redirect(url_for("error"))
