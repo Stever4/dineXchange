@@ -44,7 +44,7 @@ def home():
 
 @app.route('/buy')
 def buy():
-    return render_template("buy.html")
+    return render_template("buy.html", user=getAndrewID(g.user))
 
 @app.route('/sell')
 def sell():

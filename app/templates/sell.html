@@ -4,7 +4,7 @@
 	<p>
 	<a class="btn btn-xlg btn-primary" onclick='return checkIn()'>Check In</a>
 	<script type='text/javascript'>
-
+	window.onload = waitForMatch();
 	function checkIn()
 	{
 	var el = document.getElementById('dropdown');
@@ -24,11 +24,25 @@
 	myRootRef.child('time').set(null);
 	document.getElementById("location").innerHTML = "";
 	}
-
+	function waitForMatch()
+	{
+	var otherRootRef = new Firebase('https://dxc.firebaseio.com/bargains/'+ '{{user}}');
+    otherRootRef.on('value', function(snapshot){
+    		var roomSnapshot = dataSnapshot.child('room');
+            if(roomSnapshot.val() != null){
+                var room = snapshot.val();
+                window.location = "/bargain?room="+room
+        	}
+    	})
+	}
 </script>
+
+
+
     </p>
     <p>
 	<select class="form-control" id="dropdown">
+  <option>Entropy</option>
   <option>Skibo</option>
   <option>Resnik</option>
   <option>Asiana</option>
