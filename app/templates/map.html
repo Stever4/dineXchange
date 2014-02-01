@@ -23,7 +23,7 @@
 <title>Example Google Map</title>
 </head>
 <body>
-<div id="map-canvas" style="height:600px; width:1000px;"></div>
+<div id="map-canvas"></div>
 <script>
 var map;
 var peopleAtLocation = new Array();
@@ -70,7 +70,7 @@ var places = [
     var people = snapshot.val();
       for (var i = 0; i < locations.length; i++) {
       peopleAtLocation[i] = 0;
-      var place = locations[i];    
+      var place = locations[i];
       for(key in people)
         if(people[key].location === locations[i][0])
           peopleAtLocation[i]++;

@@ -83,6 +83,13 @@ h1 {
   margin-bottom:30px;
 }
 
+#map-canvas {
+  height:800px;
+  width:500px;
+  margin-left:auto;
+  margin-right:auto;
+}
+
 .text-hidden {
   visibility: hidden;
 }
@@ -108,6 +115,10 @@ p {
     text-indent:50px;
 }
 }
+
+
+
+
 @media screen and (min-width:1000px)
 {
 .btn-xlg {
@@ -148,6 +159,13 @@ body {
 h1 {
    color:white;
 
+}
+
+#map-canvas {
+  height:600px;
+  width:1200px;
+  margin-left:auto;
+  margin-right:auto;
 }
 
 .aboutFooter{
