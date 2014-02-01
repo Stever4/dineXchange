@@ -40,9 +40,10 @@ function getOffer(){
                     otherSent = true;
                 }
                 if(snapshot.val()['agreed']){
-                    console.log("Testing");
+                    console.log("Testing");                    
+                    var db = new Firebase('https://dxc.firebaseio.com/chat/'+room);
+                    db.remove();
                     window.location = '/chat?room='+room;
-                    
                 }
 
         }

@@ -25,10 +25,9 @@
 
 $(function() {
     var room = window.location;
+    console.log("Foo");
     room = room.search; 
     room = room.substring(6);
-    var db = new Firebase('https://dxc.firebaseio.com/chat/'+room);
-    db.remove();
     var db = new Firebase('https://dxc.firebaseio.com/chat/'+room);
     db.on('child_added', function(snapshot) {
         var val = snapshot.val();
