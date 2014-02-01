@@ -30,6 +30,7 @@
     otherRootRef.on('value', function(dataSnapshot)
     	{
     		if (dataSnapshot.hasChild('room')){
+    			alert("hi");
     			var room = dataSnapshot.child('room');
     			room = room.val();
                 window.location = "/bargain?room="+room;
