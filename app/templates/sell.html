@@ -1,9 +1,12 @@
 {% include 'header.html' %}
 <div style="text-align: center;" class="row">
 	<h1 id="location"></h1>
-	<p>
-	<a class="btn btn-xlg btn-primary" onclick='return checkIn()'>Check In</a>
-	<script type='text/javascript'>
+
+<div id = "food" class="row">
+<a class="btn btn-xlg btn-primary" onclick='return checkIn()'>Check In</a>
+</div>
+
+<script type='text/javascript'>
 	window.onload = waitForMatch();
 	function checkIn()
 	{
@@ -41,10 +44,15 @@
 
 
 
+<<<<<<< HEAD
+<div id = "food" class="row">
+<select class="form-control" id="dropdown">
+=======
     </p>
     <p>
 	<select class="form-control" id="dropdown">
   <option>Resnik</option>
+>>>>>>> 8eb5bc0315a7e70407dcf36db6b93613ede8603d
   <option>Entropy</option>
   <option>The Exchange</option>
   <option>The UC</option>
@@ -52,9 +60,10 @@
   <option>Asiana</option>
   <option>The Underground</option>
 </select>
-	</p>
-	<p>
+</div>
+
+<div id = "food" class="row">
 <a class="btn btn-xlg btn-primary" onclick='return checkOut()'>Check Out</a>
-	</p>
+</div>
 </div>
 {% include 'footer.html' %}

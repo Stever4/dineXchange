@@ -1,10 +1,14 @@
 {% include 'header.html' %}
+<<<<<<< HEAD
     <div class="row" style="text-align:centered">
 	<h1 id="location"></h1>
 	<p>
 	<script type='text/javascript'>
+=======
+>>>>>>> 51e7525d68ccc51515b1dab2e786f9987a0056ed
 
 
+<script type='text/javascript'>
 	function findMatch(place,food)
 	{
 		var sellRef = new Firebase('https://dxc.firebaseio.com/sell');
@@ -30,50 +34,28 @@
 					sellRef.child('room').set(room);
 					window.location = "/bargain?room="+room
 
-
-
-
-
 				}
 			});
 		});
 	}
-
-
 </script>
-    </p>
-    <div class="im-centered">
-    <div class="row">
-    <p>
-	<select class="form-control" id="dropdown">
-	</select>
-	</p>
-</div>
-</div>
-	<p>
-    <div class="im-centered">
-        <div class="row">
-<div class="col-lg-6">
-    <div id = "food" class="input-group">
-    <span class="input-group-addon">I Want:</span>
-      <input type="textarea" id="textbox" class="form-control">
-      <span class="input-group-btn">
-        <a onclick='return findMatch(document.getElementById("dropdown").value,document.getElementById("textbox").value)' class="btn btn-default" type="button">Start!</a>
-      </span>
-    </div><!-- /input-group -->
-  </div><!-- /.col-lg-6 -->
-  </div>
-  </div>
-  <div class="im-centered">
-      <div class="row">
-</div>
+
+<div id = "food" class="row">
+   <select class="form-control">
+   </select>
 </div>
 
-	</p>
+<div id = "food" class="input-group">
+    <span class="input-group-addon">I Want:</span>
+    <input type="textarea" id="textbox" class="form-control">
+    <span class="input-group-btn">
+    <a onclick='return findMatch(document.getElementById("dropdown").value,document.getElementById("textbox").value)' class="btn btn-default" type="button">Start!</a>
+    </span>
+</div>
 
 <script type='text/javascript'>
-	window.onload = loadShit();
-	function loadShit()
+	window.onload = loadChoices();
+	function loadChoices()
 	{
 		var x = document.getElementById("dropdown");
 		var sellRef = new Firebase('https://dxc.firebaseio.com/sell');
@@ -90,9 +72,10 @@
             }	else{
             	x.add(option)
             }
-				
+
 			});
 		});
 	}
-	</script>
+</script>
+
 {% include 'footer.html' %}
