@@ -3,8 +3,6 @@
 	<h1 id="location"></h1>
 	<p>
 
-	<a class="btn btn-xlg btn-primary" onclick='return checkIn()'>Check In</a>
-</div>
 
 	<script type='text/javascript'>
 
@@ -70,7 +68,6 @@
   </div>
   <div class="im-centered">
       <div class="row">
-<a class="btn btn-xlg btn-primary" onclick='return checkOut()'>Check Out</a>
 </div>
 </div>
 
@@ -89,7 +86,13 @@
 				var location = locationSnapshot.child('location').val();
 				var option = document.createElement("option");
  				option.text = location;
-				x.add(option)
+
+            	if ($("select[id$='dropdown'] option:contains('" + option.text + "')").length > 0) {
+                pass
+            }	else{
+            	x.add(option)
+            }
+				
 			});
 		});
 	}
