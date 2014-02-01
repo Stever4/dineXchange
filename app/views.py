@@ -14,6 +14,7 @@ def index():
 @app.route('/home')
 def home():
     return render_template("home.html")
+
 @app.route('/buy')
 def buy():
     return render_template("buy.html")
@@ -21,6 +22,10 @@ def buy():
 @app.route('/sell')
 def sell():
     return render_template("sell.html")
+
+@app.route('/about')
+def about():
+    return render_template("about.html")
 
 @auth.required
 @app.route('/login')
