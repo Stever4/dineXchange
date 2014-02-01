@@ -4,7 +4,7 @@
 	<p>
 	<a class="btn btn-xlg btn-primary" onclick='return checkIn()'>Check In</a>
 	<script type='text/javascript'>
-	indow.onload = waitForMatch();
+	window.onload = waitForMatch();
 	function checkIn()
 	{
 	var el = document.getElementById('dropdown');
@@ -26,15 +26,12 @@
 	}
 	function waitForMatch()
 	{
-	var otherRootRef = new Firebase('https://dxc.firebaseio.com/bargains/'+ '{{user}}');
+	var otherRootRef = new Firebase('https://dxc.firebaseio.com/bargains/'+ '{{user}}/'+room);
     otherRootRef.on('value', function(dataSnapshot)
     	{
-    		alert("hi");
-    		if (dataSnapshot.hasChild('room')){
-    			alert("hi");
-    			var room = dataSnapshot.child('room');
-    			room = room.val();
-                window.location = "/bargain?room="+room;
+    		if(snapshot.val() != null):
+    				var room = dataSnapshot.val();
+                	window.location = "/bargain?room="+room;
         	}
     	})
 	}
