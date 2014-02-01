@@ -1,10 +1,11 @@
 {% include 'header.html' %}
-<div style="text-align: center;">
+    <div class="row" style="text-align:centered">
 	<h1 id="location"></h1>
 	<p>
 
 
 	<a class="btn btn-xlg btn-primary" onclick='return checkIn()'>Check In</a>
+</div>
 	<script type='text/javascript'>
 
 	function checkOut()
@@ -20,9 +21,9 @@
 	function findMatch(place,food)
 	{
 		var sellRef = new Firebase('https://dxc.firebaseio.com/sell');
-		sellRef.once('value', function(locationsSnapshot) 
+		sellRef.once('value', function(locationsSnapshot)
 		{
-			locationsSnapshot.forEach(function(locationSnapshot) 
+			locationsSnapshot.forEach(function(locationSnapshot)
 			{
 				var name = locationSnapshot.name();
 				var location = locationSnapshot.child('location').val();
@@ -32,7 +33,7 @@
 
     				for(var i=0; i < 20; i++){
         			room += chars.charAt(Math.floor(Math.random() * chars.length));}
-        			
+
 					var sellRef = new Firebase('https://dxc.firebaseio.com/bargains/' + room);
 					sellRef.child('buyer').set('{{user}}');
 					sellRef.child('seller').set(name);
@@ -54,12 +55,17 @@
 
 </script>
     </p>
+    <div class="im-centered">
+    <div class="row">
     <p>
 	<select class="form-control" id="dropdown">
 	</select>
 	</p>
+</div>
+</div>
 	<p>
-
+    <div class="im-centered">
+        <div class="row">
 <div class="col-lg-6">
     <div id = "food" class="input-group">
     <span class="input-group-addon">I Want:</span>
@@ -69,7 +75,14 @@
       </span>
     </div><!-- /input-group -->
   </div><!-- /.col-lg-6 -->
+  </div>
+  </div>
+  <div class="im-centered">
+      <div class="row">
 <a class="btn btn-xlg btn-primary" onclick='return checkOut()'>Check Out</a>
+</div>
+</div>
+
 	</p>
 
 <script type='text/javascript'>
@@ -78,9 +91,9 @@
 	{
 		var x = document.getElementById("dropdown");
 		var sellRef = new Firebase('https://dxc.firebaseio.com/sell');
-		sellRef.once('value', function(locationsSnapshot) 
+		sellRef.once('value', function(locationsSnapshot)
 		{
-			locationsSnapshot.forEach(function(locationSnapshot) 
+			locationsSnapshot.forEach(function(locationSnapshot)
 			{
 				var location = locationSnapshot.child('location').val();
 				var option = document.createElement("option");
