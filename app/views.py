@@ -31,12 +31,8 @@ def index():
             db.session.commit()
             return render_template("home.html", andrewID = andrewID(email))
         else:
-            return redirect(url_for("error"))
+            return render_template("index.html", error="authenticate")
     return render_template("index.html")
-
-@app.route('/error')
-def error():
-    return ":("
 
 @app.route('/home')
 def home():
@@ -44,7 +40,7 @@ def home():
 
 @app.route('/buy')
 def buy():
-    return render_template("buy.html")
+    return render_template("buy.html", user=getAndrewID(g.user))
 
 @app.route('/sell')
 def sell():
