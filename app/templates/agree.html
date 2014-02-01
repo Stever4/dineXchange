@@ -52,6 +52,33 @@ $(function() {
     });
 });
 
+function closeWin(){
+    var room = window.location;
+    console.log("Foo");
+    room = room.search; 
+    room = room.substring(6);
+    var db = new Firebase('https://dxc.firebaseio.com/chat/'+room);
+    db.on('child_added', function(snapshot) {
+        var val = snapshot.val();
+        function htmlEntities(str) {
+            return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+                    }
+        message = htmlEntities(val).substring(0,140);
+        var $message = $('<div class="message"><b>' + val.name + '</b>: ' + val.message + '</div>');
+        $('#chat').append($message);
+        chat.scrollTop = chat.scrollHeight;
+        console.log('#chat');
+    });
+    db.push({
+        name: '{{user}}',
+        message: "abandoned you cause you suck haha fuck you."
+    });
+    $(this).val('');
+    }
+    });
+});
+
+body onbeforeunload="closeWin()" 
 </script>
 
 {% include 'footer.html' %}
