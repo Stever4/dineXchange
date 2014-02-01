@@ -7,7 +7,6 @@
 
 	function checkIn()
 	{
-	alert('{{user}}');
 	var el = document.getElementById('dropdown');
     var location = el.options[el.selectedIndex].innerHTML;
     var myRootRef = new Firebase('https://dxc.firebaseio.com/sell/' + '{{user}}');
