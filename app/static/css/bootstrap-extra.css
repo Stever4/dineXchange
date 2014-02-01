@@ -84,17 +84,26 @@ h1 {
     color: white;
     font-size: 14pt;
     text-align: justify;
+    margin-left: 150px;
+    margin-right: 150px;
 }
 
 .abouttldr {
     color: red;
     font-size: 14pt;
+    margin-left: 150px;
+    margin-right: 150px;
 }
 
+.aboutTag {
+  color: white;
+  font-size: 12pt;
+  margin-top: 10px;
+  margin-left: 150px;
+  margin-right: 150px;
+}
 p {
     margin-top: 0px;
-    margin-right: 150px;
     margin-bottom: 15px;
-    margin-left: 150px;
     text-indent:50px;
 }
