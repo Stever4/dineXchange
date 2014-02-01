@@ -7,15 +7,6 @@
 	<a class="btn btn-xlg btn-primary" onclick='return checkIn()'>Check In</a>
 	<script type='text/javascript'>
 
-	function checkOut()
-	{
-	var el = document.getElementById('dropdown');
-    var location = el.options[el.selectedIndex].innerHTML;
-	var myRootRef = new Firebase('https://dxc.firebaseio.com/sell/' + location);
-	myRootRef.child('location').set(null);
-	myRootRef.child('time').set(null);
-	document.getElementById("location").innerHTML = "";
-	}
 
 	function findMatch(place,food)
 	{
