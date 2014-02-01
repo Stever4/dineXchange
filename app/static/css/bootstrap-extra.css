@@ -1,5 +1,5 @@
 .btn-xlg {
-    padding: 25px 100px;
+    padding: 20px 80px;
     font-size: 35px;
     line-height: normal;
     -webkit-border-radius: 8px;
@@ -8,7 +8,21 @@
    margin: 20px;
    position: relative;
     	}
+<<<<<<< HEAD
 
+=======
+.im-centered{margin:0px auto; max-width: 300px;}
+.my-fluid-container {
+  padding-left: 15px;
+  padding-right: 15px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.container-full {
+  margin: 0 auto;
+  width: 100%;
+}
+>>>>>>> cd2b3b872b303c394f9ab66565ccbd5976625067
 body {
    background:black;
 }
