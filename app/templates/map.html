@@ -94,7 +94,7 @@ var places = [
   }
 
   //credit to mozilla developer network
-  var watchID = navigator.geolocation.watchPosition(function(position) {
+  var watchID = navigator.geolocation.getCurrentPosition(function(position) {
   makeLabel(position.coords.latitude, position.coords.longitude);
 });
 
