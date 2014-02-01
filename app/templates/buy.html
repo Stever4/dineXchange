@@ -1,5 +1,46 @@
 {% include 'header.html' %}
+<div style="text-align: center;">
+	<h1 id="location"></h1>
 	<p>
-		<a class="btn btn-xlg btn-primary" href="/sell">I Have Blocks/Dinex</a>
+	<a class="btn btn-xlg btn-primary" onclick='return checkIn()'>Check In</a>
+	<script type='text/javascript'>
+
+	function checkIn()
+	{
+	var el = document.getElementById('dropdown');
+    var location = el.options[el.selectedIndex].innerHTML;
+    var myRootRef = new Firebase('https://dxc.firebaseio.com/sell/' + location);
+	myRootRef.child('location').set(location);
+	myRootRef.child('time').set(new Date().getTime());
+	document.getElementById("location").innerHTML = "Currently @ " + location;
+	}
+
+	function checkOut()
+	{
+	var el = document.getElementById('dropdown');
+    var location = el.options[el.selectedIndex].innerHTML;
+	var myRootRef = new Firebase('https://dxc.firebaseio.com/sell/' + location);
+	myRootRef.child('location').set(null);
+	myRootRef.child('time').set(null);
+	document.getElementById("location").innerHTML = "";
+	}
+
+</script>
+    </p>
+    <p>
+	<select class="form-control" id="dropdown">
+  <option>Skibo</option>
+  <option>Resnik</option>
+  <option>Asiana</option>
+  <option>The Exchange</option>
+</select>
 	</p>
+	<p>
+<a class="btn btn-xlg btn-primary" onclick='return checkOut()'>Check Out</a>
+	</p>
+<div class="btn-group btn-group-lg">
+  <a type="button" class="btn btn-default" href="#">@ Skibo</a>
+  <a type="button" class="btn btn-default" href="/sell/checkin">Orders</a>
+</div>
+</div>
 {% include 'footer.html' %}

@@ -6,6 +6,7 @@
        -moz-border-radius: 8px;
             border-radius: 8px;
    margin: 20px;
+   position: relative;
     	}
 
 body {
@@ -14,6 +15,7 @@ body {
 
 h1 {
    color:white;
+   
 }
 
 .form-control {
