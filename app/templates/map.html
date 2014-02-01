@@ -1,18 +1,84 @@
 {% include 'header.html' %}
+<script type="text/javascript"
+  src="https://maps.googleapis.com/maps/api/js?sensor=false">
+</script>
+<script type="text/javascript"
+  src="/static/js/markerwithlabel.js">
+</script>
+ <style type="text/css">
+   .labels {
+     color: red;
+     background-color: white;
+     font-family: "Lucida Grande", "Arial", sans-serif;
+     font-size: 10px;
+     font-weight: bold;
+     text-align: center;
+     width: 40px;
+     border: 2px solid black;
+     white-space: nowrap;
+   }
+ </style>
+<meta charset="UTF-8">
+<title>Example Google Map</title>
+</head>
+<body>
+<div id="map-canvas" style="height:600px; width:1000px;"></div>
+<script>
+var places = [
+      ['UC',40.443452468900105, -79.94170546531677 ],
+      ['Resnik',40.44253796657429, -79.939945936203],
+      ['The Exchange',40.44150097120604, -79.94205951690674 ],
+      ['The Underground', 40.44526510638198,  -79.94346499443054]
+    ];
+  function initialise() {
 
- <script type="text/javascript"
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC3TaUVx7h2_t_bD7HhLTzXGcJDTvGPknA&sensor=SET_TO_TRUE_OR_FALSE">
-    </script>
-    <script type="text/javascript">
-      function initialize() {
-        var mapOptions = {
-          center: new google.maps.LatLng(-34.397, 150.644),
-          zoom: 8
-        };
-        var map = new google.maps.Map(document.getElementById("map-canvas"),
-            mapOptions);
+    var myLatlng = new google.maps.LatLng(40.4433851,-79.9429124); // Add the coordinates
+    var mapOptions = {
+      zoom: 17, // The initial zoom level when your map loads (0-20)
+      minZoom: 6, // Minimum zoom level allowed (0-20)
+      maxZoom: 17, // Maximum soom level allowed (0-20)
+      zoomControl:true, // Set to true if using zoomControlOptions below, or false to remove all zoom controls.
+      zoomControlOptions: {
+          style:google.maps.ZoomControlStyle.DEFAULT // Change to SMALL to force just the + and - buttons.
+      },
+      center: myLatlng, // Centre the Map to our coordinates variable
+      mapTypeId: google.maps.MapTypeId.ROADMAP, // Set the type of Map
+      scrollwheel: false, // Disable Mouse Scroll zooming (Essential for responsive sites!)
+      // All of the below are set to true by default, so simply remove if set to true:
+      panControl:false, // Set to false to disable
+      mapTypeControl:false, // Disable Map/Satellite switch
+      scaleControl:false, // Set to false to hide scale
+      streetViewControl:false, // Set to disable to hide street view
+      overviewMapControl:false, // Set to false to remove overview control
+      rotateControl:false // Set to false to disable rotate control
       }
-      google.maps.event.addDomListener(window, 'load', initialize);
-    </script>
-    <div id="map-canvas"/>
+    var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions); // Render our map within the empty div
+
+    setMarkers(map, places);
+
+     google.maps.event.addListener(map, 'click', function (event) {
+      console.log(event.latLng);
+    });
+  }
+  function setMarkers(map, locations) {
+  for (var i = 0; i < locations.length; i++) {
+    var place = locations[i];
+    var myLatLng = new google.maps.LatLng(place[1], place[2]);
+
+    var mapLabel = new MarkerWithLabel({
+           position: myLatLng,
+       draggable: true,
+       raiseOnDrag: true,
+       map: map,
+       labelContent: "42",
+       labelAnchor: new google.maps.Point(22, 0),
+       labelClass: "labels", // the CSS class for the label
+       labelStyle: {opacity: 1.0}
+         });
+
+
+}
+  }
+  google.maps.event.addDomListener(window, 'load', initialise); // Execute our 'initialise' function once the page has loaded.
+</script>
 {% include 'footer.html' %}
