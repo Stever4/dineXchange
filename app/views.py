@@ -22,5 +22,6 @@ def login():
         return redirect('/')
     return render_template('login.html',
                             title = 'Sign In',
-                            form = form)
+                            form = form,
+                            providers = app.config['OPENID_PROVIDERS'])
 
