@@ -26,6 +26,7 @@ function getOffer(){
     room = room.substring(6);
     var otherRootRef = new Firebase('https://dxc.firebaseio.com/bargains/'+room);
     otherRootRef.on('value', function(snapshot){
+            console.log(snapshot.val());
             if(snapshot.val() != null){
                 if(!isNaN(snapshot.val()['offer']))
                 {
@@ -35,7 +36,7 @@ function getOffer(){
                     document.getElementById("agreeButton").innerHTML = "Agree";
                     otherSent = true;
                 }
-                else if(snapshot.val()['agreed']){
+                if(snapshot.val()['agreed']){
                     console.log("Testing");
                     window.location = '/chat?room='+room;
                     
