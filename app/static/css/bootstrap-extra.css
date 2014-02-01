@@ -24,11 +24,10 @@ h1 {
     margin: 5px;
 }
 
-<<<<<<< HEAD
 .text-hidden {
   visibility: hidden;
 }
-=======
+
 .about {
     color: white;
     font-size: 14pt;
@@ -45,4 +44,3 @@ p {
 		margin-bottom: 15px;
 		margin-left: 150px;
 }
->>>>>>> 8f6344f8a8215aa498d0ad289f6a796ceaf58518
