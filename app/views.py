@@ -66,6 +66,7 @@ def users():
 @app.route('/map')
 def map():
     return render_template("map.html")
+
 @auth.required
 @app.route('/login')
 def login():
