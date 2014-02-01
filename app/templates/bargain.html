@@ -1,11 +1,11 @@
 {% include 'header.html' %}
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
 <script type = 'text/javascript'>
 window.onload = getOffer();
 var otherSent = false;
 var agreed = false;
 
 function sendOffer(){
-    console.log("Hello");
     var money = document.getElementById('offer').value;
     if(!isNaN(money)){
         money = Math.round(money * 100) / 100
@@ -30,21 +30,17 @@ function getOffer(){
     room = room.substring(6);
     var otherRootRef = new Firebase('https://dxc.firebaseio.com/bargains/'+room);
     otherRootRef.on('value', function(snapshot){
-            console.log(snapshot.val()['offer']);
             if(snapshot.val() != null){
                 var food = snapshot.val()['food']
                 document.getElementById('otherOffer').innerHTML = "Offer for " + food + "...";
-                console.log(snapshot.val()['offer']);
                 if(!isNaN(snapshot.val()['offer']))
                 {
                     var money = snapshot.val()['offer'];                    
-                    console.log("Initial offer"+money);
                     document.getElementById('otherOffer').innerHTML = "Offer for " + food + ": $"+money ;
                     document.getElementById("agreeButton").innerHTML = "Agree";
                     otherSent = true;
                 }
-                if(snapshot.val()['agreed']){
-                    console.log("Testing");                    
+                if(snapshot.val()['agreed']){                   
                     var db = new Firebase('https://dxc.firebaseio.com/chat/'+room);
                     db.remove();
                     window.location = '/chat?room='+room;
@@ -68,6 +64,13 @@ function agree(){
 
 }
 
+function keyPressed(event){
+    console.log("Success");
+    if(event.which == 13){
+        sendOffer();
+    }
+}
+
 </script>
 
 <div style="text-align: center;">
@@ -76,7 +79,7 @@ function agree(){
 
     <div id="bargain" class="input-group">
         <span class="input-group-addon">My Offer: $</span>
-      <input type="text" id="offer" class="form-control">
+      <input type="text" id="offer" class="form-control" onkeypress = 'keyPressed(event)'>
       <span class="input-group-btn">
         <button class="btn btn-default" onclick="return sendOffer()" type="button">Send Offer</button>
       </span>
