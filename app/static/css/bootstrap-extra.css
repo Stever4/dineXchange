@@ -10,6 +10,8 @@ and (max-device-width : 568px) {
        -moz-border-radius: 8px;
             border-radius: 8px;
    margin: 20px;
+   margin-top: 25px;
+   margin-bottom: 25px;
    position: relative;
     	}
 
@@ -33,7 +35,7 @@ and (max-device-width : 568px) {
 }
 
 body {
-   background:orange;
+   background:black;
 }
 
 h1 {
@@ -85,25 +87,18 @@ h1 {
 
 .about {
     color: white;
-    font-size: 14pt;
-    text-align: justify;
-    margin-left: 150px;
-    margin-right: 150px;
+    font-size: 12pt;
 }
 
 .abouttldr {
     color: red;
     font-size: 14pt;
-    margin-left: 150px;
-    margin-right: 150px;
 }
 
 .aboutTag {
   color: white;
   font-size: 12pt;
   margin-top: 10px;
-  margin-left: 150px;
-  margin-right: 150px;
 }
 p {
     margin-top: 0px;
