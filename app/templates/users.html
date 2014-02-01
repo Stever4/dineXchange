@@ -1,0 +1,9 @@
+{% include 'header.html' %}
+
+        {% for user in userList %}
+        <p>{{user.andrewID}} </p>
+        {% else %}
+        <h1> No users. <h1>
+        {% endfor %}
+
+{% include 'footer.html' %}

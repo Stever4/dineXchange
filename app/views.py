@@ -1,7 +1,7 @@
 from flask import render_template, redirect,url_for, g
 from flask_googleauth import GoogleAuth
-
-from app import app
+from models import User, ROLE_USER, ROLE_ADMIN
+from app import app, db
 
 auth = GoogleAuth(app)
 
@@ -21,8 +21,14 @@ def getAndrewID(user):
 def index():
     if g.user:
         email = getEmail(g.user)
-        if isCMU(email):
+        user = User.query.filter_by(email = email).first()
+        if user:
+            return render_template("home.html", andrewID = user.andrewID)
+        elif isCMU(email):
             print andrewID(email)
+            user = User(email = email, andrewID = andrewID(email))
+            db.session.add(user)
+            db.session.commit()
             return render_template("home.html", andrewID = andrewID(email))
         else:
             return redirect(url_for("error"))
@@ -40,7 +46,6 @@ def home():
 def buy():
     return render_template("buy.html")
 
-
 @app.route('/sell')
 def sell():
     return render_template("sell.html", user=getAndrewID(g.user))
@@ -53,6 +58,10 @@ def bargain():
 def about():
     return render_template("about.html")
 
+@app.route('/users')
+def users():
+    userList = User.query.order_by('id desc')
+    return render_template("users.html", userList = userList)
 @auth.required
 @app.route('/login')
 def login():
