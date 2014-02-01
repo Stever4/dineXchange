@@ -37,7 +37,7 @@ function getOffer(){
                 }
                 else{
                     if(snapshot.val()['agreed']){
-                        window.open('/chat','_self');
+                        window.location = '/chat?room='+room;
                     }
                 }
 
@@ -49,15 +49,13 @@ function agree(){
     var agreementRef = new Firebase('https://dxc.firebaseio.com/bargains/'+room)
     if(otherSent){
         agreed = true;
-        window.open('/chat','_self');
+        window.location = '/chat?room='+room;
     }
     agreementRef.child('agreed').set(agreed);
 
 }
 
 </script>
-
-
 
 <div style="text-align: center;">
 
