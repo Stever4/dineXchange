@@ -7,7 +7,7 @@ var agreed = false;
 
 function sendOffer(){
     var money = document.getElementById('offer').value;
-    if(!isNaN(money)){
+    if(!isNaN(money) && money >= 0){
         money = Math.round(money * 100) / 100
         var room = window.location;
         room = room.search; 
