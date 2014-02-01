@@ -5,11 +5,28 @@ from app import app
 
 auth = GoogleAuth(app)
 
+def getEmail(user):
+    return user.get(u'email', None)
+
+def isCMU(email):
+    return email.split('@')[1] == 'andrew.cmu.edu'
+
+def andrewID(email):
+    return email.split('@')[0]
+
 @app.route('/')
 def index():
     if g.user:
-        return redirect(url_for("home"))
+        email = getEmail(g.user)
+        if isCMU(email):
+            return render_template(render_template("home.html", andrewID = andrewID(email)))
+        else:
+            return redirect(url_for("error"))
     return render_template("index.html")
+
+@app.route('/error')
+def error():
+    return ":("
 
 @app.route('/home')
 def home():
