@@ -5,7 +5,7 @@ from app import app, db
 from cmu import getEmail, isCMU, andrewID, getAndrewID
 
 auth = GoogleAuth(app)
-
+auth.force_auth_on_every_request = True
 @app.route('/')
 def index():
     if g.user:
@@ -45,6 +45,7 @@ def about():
 
 @app.route('/users')
 def users():
+    print "HIII"
     userList = User.query.order_by('id desc')
     return render_template("users.html", userList = userList)
 
@@ -56,8 +57,3 @@ def map():
 @app.route('/login')
 def login():
     return
-
-@app.route('/logout')
-def logout():
-    auth = None
-    return redirect(url_for("index.html"))
