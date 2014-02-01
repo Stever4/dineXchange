@@ -2,8 +2,11 @@
 <div style="text-align: center;">
 	<h1 id="location"></h1>
 	<p>
+<<<<<<< HEAD
+=======
 
 	<a class="btn btn-xlg btn-primary" onclick='return checkIn()'>Check In</a>
+>>>>>>> 9cf03e2e4f303067f73041f1e015a7985cc352fb
 	<script type='text/javascript'>
 
 	function checkOut()
@@ -16,14 +19,38 @@
 	document.getElementById("location").innerHTML = "";
 	}
 
-	function checkOut()
+	function findMatch(place,food)
 	{
-	var el = document.getElementById('dropdown');
-    var location = el.options[el.selectedIndex].innerHTML;
-	var myRootRef = new Firebase('https://dxc.firebaseio.com/sell/' + location);
-	myRootRef.child('location').set(null);
-	myRootRef.child('time').set(null);
-	document.getElementById("location").innerHTML = "";
+		var sellRef = new Firebase('https://dxc.firebaseio.com/sell');
+		sellRef.once('value', function(locationsSnapshot) 
+		{
+			locationsSnapshot.forEach(function(locationSnapshot) 
+			{
+				var name = locationSnapshot.name();
+				var location = locationSnapshot.child('location').val();
+				if (location == place){
+					var room = "";
+    				var chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+
+    				for(var i=0; i < 20; i++){
+        			room += chars.charAt(Math.floor(Math.random() * chars.length));}
+        			
+					var sellRef = new Firebase('https://dxc.firebaseio.com/bargains/' + room);
+					sellRef.child('buyer').set('{{user}}');
+					sellRef.child('seller').set(name);
+					sellRef.child('location').set(location);
+					sellRef.child('food').set(food);
+					var sellRef = new Firebase('https://dxc.firebaseio.com/sell/'+name);
+					sellRef.child('room').set(room);
+					window.location = "/bargain?room="+room
+
+
+
+
+
+				}
+			});
+		});
 	}
 
 
@@ -34,8 +61,21 @@
 	</select>
 	</p>
 	<p>
+<<<<<<< HEAD
+
+<div class="col-lg-6">
+    <div id = "food" class="input-group">
+    <span class="input-group-addon">I Want:</span>
+      <input type="textarea" id="textbox" class="form-control">
+      <span class="input-group-btn">
+        <a onclick='return findMatch(document.getElementById("dropdown").value,document.getElementById("textbox").value)' class="btn btn-default" type="button">Start!</a>
+      </span>
+    </div><!-- /input-group -->
+  </div><!-- /.col-lg-6 -->
+=======
 <a class="btn btn-xlg btn-primary" onclick='return checkOut()'>Check Out</a>
 	</p>
+>>>>>>> 9cf03e2e4f303067f73041f1e015a7985cc352fb
 
 <script type='text/javascript'>
 	window.onload = loadShit();

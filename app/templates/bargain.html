@@ -2,13 +2,19 @@
 <script type = 'text/javascript'>
 window.onload = getOffer();
 var otherSent = false;
+<<<<<<< HEAD
+=======
 var agreed = false;
 
+>>>>>>> 9cf03e2e4f303067f73041f1e015a7985cc352fb
 function sendOffer(){
     console.log("Hello");
     var money = document.getElementById('offer').value;
     if(!isNaN(money)){
-        var myRootRef = new Firebase('https://dxc.firebaseio.com/sell/test');
+        var room = window.location;
+        room = room.search; 
+        room = room.substring(6);
+        var myRootRef = new Firebase('https://dxc.firebaseio.com/bargains/'+room);
         myRootRef.child('offer').set(money);
         document.getElementById('agreeButton').innerHTML = "Waiting for agreement...";
         otherSent = false;
@@ -18,7 +24,10 @@ function sendOffer(){
 }
 
 function getOffer(){
-    var otherRootRef = new Firebase('https://dxc.firebaseio.com/sell/test');
+    var room = window.location;
+    room = room.search; 
+    room = room.substring(6);
+    var otherRootRef = new Firebase('https://dxc.firebaseio.com/bargains/'+room);
     otherRootRef.on('value', function(snapshot){
             if(snapshot.val() != null){
                 if(snapshot.val()['offer'] != null)
