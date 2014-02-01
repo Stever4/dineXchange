@@ -62,6 +62,11 @@ def about():
 def users():
     userList = User.query.order_by('id desc')
     return render_template("users.html", userList = userList)
+
+@app.route('/map')
+def map():
+    return render_template("map.html")
+
 @auth.required
 @app.route('/login')
 def login():
