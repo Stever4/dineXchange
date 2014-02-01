@@ -1,13 +1,13 @@
 {% include 'header.html' %}
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
 <script type = 'text/javascript'>
 window.onload = getOffer();
 var otherSent = false;
 var agreed = false;
 
 function sendOffer(){
-    console.log("Hello");
     var money = document.getElementById('offer').value;
-    if(!isNaN(money)){
+    if(!isNaN(money) && money >= 0){
         money = Math.round(money * 100) / 100
         var room = window.location;
         room = room.search;
@@ -16,6 +16,9 @@ function sendOffer(){
         myRootRef.child('offer').set(money);
         document.getElementById('agreeButton').innerHTML = "Waiting for agreement...";
         otherSent = false;
+    }
+    else{
+        alert("Please enter a number!");
     }
     document.getElementById('offer').value = "";
 }
@@ -26,21 +29,28 @@ function getOffer(){
     room = room.substring(6);
     var otherRootRef = new Firebase('https://dxc.firebaseio.com/bargains/'+room);
     otherRootRef.on('value', function(snapshot){
-            console.log(snapshot.val());
             if(snapshot.val() != null){
                 var food = snapshot.val()['food']
                 document.getElementById('otherOffer').innerHTML = "Offer for " + food + "...";
                 if(!isNaN(snapshot.val()['offer']))
                 {
+<<<<<<< HEAD
                     var money = snapshot.val()['offer'];
 
                     console.log("Initial offer"+money);
+=======
+                    var money = snapshot.val()['offer'];                    
+>>>>>>> 8eb5bc0315a7e70407dcf36db6b93613ede8603d
                     document.getElementById('otherOffer').innerHTML = "Offer for " + food + ": $"+money ;
                     document.getElementById("agreeButton").innerHTML = "Agree";
                     otherSent = true;
                 }
+<<<<<<< HEAD
                 if(snapshot.val()['agreed']){
                     console.log("Testing");
+=======
+                if(snapshot.val()['agreed']){                   
+>>>>>>> 8eb5bc0315a7e70407dcf36db6b93613ede8603d
                     var db = new Firebase('https://dxc.firebaseio.com/chat/'+room);
                     db.remove();
                     window.location = '/chat?room='+room;
@@ -64,6 +74,13 @@ function agree(){
 
 }
 
+function keyPressed(event){
+    console.log("Success");
+    if(event.which == 13){
+        sendOffer();
+    }
+}
+
 </script>
 
 <div style="text-align: center;">
@@ -72,7 +89,7 @@ function agree(){
 
     <div id="bargain" class="input-group">
         <span class="input-group-addon">My Offer: $</span>
-      <input type="text" id="offer" class="form-control">
+      <input type="text" id="offer" class="form-control" onkeypress = 'keyPressed(event)'>
       <span class="input-group-btn">
         <button class="btn btn-default" onclick="return sendOffer()" type="button">Send Offer</button>
       </span>
