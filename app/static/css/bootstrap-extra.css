@@ -47,7 +47,9 @@ h1 {
   position:absolute;
   bottom:5px;
   text-align: center;
-  left: 50%;
+  display: block;
+  left: 0;
+  right:0;
 }
 
 .my-fluid-container{
@@ -152,7 +154,9 @@ h1 {
   position:absolute;
   bottom:5px;
   text-align: center;
-  left: 50%;
+  display: block;
+  left: 0;
+  right:0;
 }
 
 .my-fluid-container{
