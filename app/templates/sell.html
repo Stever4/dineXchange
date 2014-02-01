@@ -1,6 +1,6 @@
 {% include 'header.html' %}
 <div style="text-align: center;">
-	<h1 id="location"></h1>
+	<h1 class="text-hidden" id="location">Not Checked In</h1>
 	<p>
 	<a class="btn btn-xlg btn-primary" onclick='return checkIn()'>Check In</a>
 	<script type='text/javascript'>
@@ -13,6 +13,7 @@
 	myRootRef.child('location').set(location);
 	myRootRef.child('time').set(new Date().getTime());
 	document.getElementById("location").innerHTML = "Currently @ " + location;
+	document.getElementById("location").className = "";
 	}
 
 	function checkOut()
@@ -22,7 +23,8 @@
 	var myRootRef = new Firebase('https://dxc.firebaseio.com/sell/' + '{{user}}');
 	myRootRef.child('location').set(null);
 	myRootRef.child('time').set(null);
-	document.getElementById("location").innerHTML = "";
+	document.getElementById("location").innerHTML = "Not Checked In";
+	document.getElementById("location").className = "text-hidden";
 	}
 
 </script>
@@ -38,9 +40,5 @@
 	<p>
 <a class="btn btn-xlg btn-primary" onclick='return checkOut()'>Check Out</a>
 	</p>
-<div class="btn-group btn-group-lg">
-  <a type="button" class="btn btn-default" href="#">@ Skibo</a>
-  <a type="button" class="btn btn-default" href="/sell/checkin">Orders</a>
-</div>
 </div>
 {% include 'footer.html' %}
