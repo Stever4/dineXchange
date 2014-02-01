@@ -2,7 +2,8 @@
 
 
 <body>
-    <div id = "details">Discuss meeting details</div>
+    <div id = "details">You are now in a unique chatroom with your buyer/seller. This
+    chatroom can be used to determine a meeting location and any final details.</div>
     <input type='text' id='message' placeholder='Message...'>
     <div id="chat">
     </div>
@@ -31,7 +32,7 @@
 $(function() {
     var room = window.location;
     console.log("Foo");
-    room = room.search; 
+    room = room.search;
     room = room.substring(6);
     var db = new Firebase('https://dxc.firebaseio.com/chat/'+room);
     db.on('child_added', function(snapshot) {
