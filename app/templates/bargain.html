@@ -42,9 +42,9 @@ function agree(){
     <div>
         <label>My Offer: $</label>
         <input type="text" id="offer"/>
-        <a class = "btn btn-lg btn-primary" onclick="return sendOffer()">Send offer</a>
+        <a class = "btn btn-lg btn-primary" class = '.col-xs-6 .col-md-4' onclick="return sendOffer()">Send offer</a>
     </div>
     <label id="otherOffer">Other offer:$</label>
-    <a class = "btn btn-lg btn-primary" onclick="return agree()" id = "agreeButton">Waiting for agreement...</a>
+    <a class = "btn btn-lg btn-primary" onclick="return agree()" class = '.col-xs-6 .col-md-4' id = "agreeButton">Waiting for agreement...</a>
 </div>
 {% include 'footer.html' %}
