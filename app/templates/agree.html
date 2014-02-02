@@ -1,7 +1,9 @@
+
 {% include 'header.html' %}
 
 
 <body>
+<h1 id="location+cost" align="center"></h1>
 <div id = "chatborder">
     <div id = "details">You are now in a unique chatroom with your buyer/seller to determine a meeting location and any final details.</div>
     <input type='text' id='message' placeholder='Message...'>
@@ -21,6 +23,14 @@ $(function() {
     console.log("Foo");
     room = room.search;
     room = room.substring(6);
+
+    var infoDB = new Firebase('https://dxc.firebaseio.com/bargains/'+room);
+    infoDB.once('value', function(snapshot) {
+        var food = snapshot.val().food;
+        var cost = snapshot.val().offer;
+        document.getElementById("location+cost").innerHTML = food + " for $" + cost;
+        })
+
     var db = new Firebase('https://dxc.firebaseio.com/chat/'+room);
     db.on('child_added', function(snapshot) {
         var val = snapshot.val();
