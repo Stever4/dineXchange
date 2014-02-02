@@ -4,6 +4,14 @@
     <h1 id="location"></h1>
 
     <script type='text/javascript'>
+    window.onload = checkOut();
+    function checkOut()
+    {
+    var sellRef = new Firebase('https://dxc.firebaseio.com/sell/' + '{{user}}');
+    sellRef.child('location').set(null);
+    sellRef.child('time').set(null);
+    sellRef.child('room').set(null);
+    }
     function findMatch(place,food)
     {
         var buyRef = new Firebase('https://dxc.firebaseio.com/sell');

@@ -25,7 +25,7 @@ def index():
 
 @app.route('/home')
 def home():
-    return render_template("home.html")
+    return render_template("home.html", user=getAndrewID(g.user))
 
 @app.route('/chat')
 def chat():
@@ -41,20 +41,20 @@ def sell():
 
 @app.route('/bargain')
 def bargain():
-    return render_template('bargain.html')
+    return render_template('bargain.html', user=getAndrewID(g.user))
 
 @app.route('/about')
 def about():
-    return render_template("about.html")
+    return render_template("about.html", user=getAndrewID(g.user))
 
 @app.route('/users')
 def users():
     userList = User.query.order_by('id desc')
-    return render_template("users.html", userList = userList)
+    return render_template("users.html", userList = userList, user=getAndrewID(g.user))
 
 @app.route('/map')
 def map():
-    return render_template("map.html")
+    return render_template("map.html", user=getAndrewID(g.user))
 
 @auth.required
 @app.route('/login')
