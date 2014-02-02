@@ -4,18 +4,10 @@
     <h1 id="location"></h1>
 
     <script type='text/javascript'>
-    window.onload = checkOut();
-    function checkOut()
-    {
-    var sellRef = new Firebase('https://dxc.firebaseio.com/sell/' + '{{user}}');
-    sellRef.child('location').set(null);
-    sellRef.child('time').set(null);
-    sellRef.child('room').set(null);
-    }
     function findMatch(place,food)
     {
-        var buyRef = new Firebase('https://dxc.firebaseio.com/sell');
-        buyRef.once('value', function(locationsSnapshot)
+        var sellRef = new Firebase('https://dxc.firebaseio.com/sell');
+        sellRef.once('value', function(locationsSnapshot)
         {
             locationsSnapshot.forEach(function(locationSnapshot)
             {
@@ -28,13 +20,13 @@
                     for(var i=0; i < 20; i++){
                     room += chars.charAt(Math.floor(Math.random() * chars.length));}
 
-                    var buyRef = new Firebase('https://dxc.firebaseio.com/bargains/' + room);
-                    buyRef.child('buyer').set('{{user}}');
-                    buyRef.child('seller').set(name);
-                    buyRef.child('location').set(location);
-                    buyRef.child('food').set(food);
+                    var sellRef = new Firebase('https://dxc.firebaseio.com/bargains/' + room);
+                    sellRef.child('buyer').set('{{user}}');
+                    sellRef.child('seller').set(name);
+                    sellRef.child('location').set(location);
+                    sellRef.child('food').set(food);
                     var sellRef = new Firebase('https://dxc.firebaseio.com/sell/'+name);
-                    buyRef.child('room').set(room);
+                    sellRef.child('room').set(room);
                     window.location = "/bargain?room="+room
                 }
             });
@@ -57,12 +49,12 @@
     </div>
 
 <script type='text/javascript'>
-    window.onload = load();
-    function load()
+    window.onload = loadShit();
+    function loadShit()
     {
         var x = document.getElementById("dropdown");
-        var buyRef = new Firebase('https://dxc.firebaseio.com/sell');
-        buyRef.on('value', function(locationsSnapshot)
+        var sellRef = new Firebase('https://dxc.firebaseio.com/sell');
+        sellRef.on('value', function(locationsSnapshot)
         {
             $("#dropdown").empty();
 
