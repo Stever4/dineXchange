@@ -25,13 +25,15 @@ function setMarkers(map, locations) {
       for (var i = 0; i < locations.length; i++) {
       peopleAtLocation[i] = 0;
       var place = locations[i];
-      for(key in people)
+      for(key in people){
         if(people[key].location === locations[i][0])
-          peopleAtLocation[i]++;
+          peopleAtLocation[i]++;}
     var myLatLng = new google.maps.LatLng(place[1], place[2]);
     console.log(peopleAtLocation[i]);
 
-}}}
+}
+}
+)}
 
 navigator.geolocation.getCurrentPosition(function(position) {
   makeLabel(position.coords.latitude, position.coords.longitude);
