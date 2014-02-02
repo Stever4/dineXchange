@@ -7,16 +7,16 @@
     <link rel="apple-touch-icon" href="static/icon.png">
     <script type='text/javascript' src='https://cdn.firebase.com/js/client/1.0.2/firebase.js'></script>
     <script type='text/javascript'>
-    // window.onbeforeunload = checkOut();
-    window.addEventListener('onbeforeunload', checkOut())
+    window.onbeforeunload = checkOut();
+    // window.onunload = checkOut();
+    // window.onclose = checkOut();
     function checkOut()
   {
-    
+    alert("foo");
   var sellRef = new Firebase('https://dxc.firebaseio.com/sell/' + '{{user}}');
   sellRef.child('location').set(null);
   sellRef.child('time').set(null);
   sellRef.child('room').set(null);
-
   }
     </script>
     
