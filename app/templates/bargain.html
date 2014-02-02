@@ -27,8 +27,8 @@ function getOffer(){
     var room = window.location;
     room = room.search;
     room = room.substring(6);
-    var otherRootRef = new Firebase('https://dxc.firebaseio.com/bargains/'+room);
-    otherRootRef.on('value', function(snapshot){
+    var offerRef = new Firebase('https://dxc.firebaseio.com/bargains/'+room);
+    offerRef.on('value', function(snapshot){
             if(snapshot.val() != null){
                 var food = snapshot.val()['food']
                 document.getElementById('otherOffer').innerHTML = "Offer for " + food + "...";

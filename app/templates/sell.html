@@ -18,9 +18,9 @@
 	{
 	var el = document.getElementById('dropdown');
     var location = el.options[el.selectedIndex].innerHTML;
-    var myRootRef = new Firebase('https://dxc.firebaseio.com/sell/' + '{{user}}');
-	myRootRef.child('location').set(location);
-	myRootRef.child('time').set(new Date().getTime());
+    var sellRef = new Firebase('https://dxc.firebaseio.com/sell/' + '{{user}}');
+	sellRef.child('location').set(location);
+	sellRef.child('time').set(new Date().getTime());
 	document.getElementById("location").innerHTML = "Currently @ " + location;
 	}
 
@@ -28,15 +28,15 @@
 	{
 	var el = document.getElementById('dropdown');
     var location = el.options[el.selectedIndex].innerHTML;
-	var myRootRef = new Firebase('https://dxc.firebaseio.com/sell/' + '{{user}}');
-	myRootRef.child('location').set(null);
-	myRootRef.child('time').set(null);
-	myRootRef.child('room').set(null);
+	var sellRef = new Firebase('https://dxc.firebaseio.com/sell/' + '{{user}}');
+	sellRef.child('location').set(null);
+	sellRef.child('time').set(null);
+	sellRef.child('room').set(null);
 	document.getElementById("location").innerHTML = "";
 	}
 	function waitForMatch()
 	{
-		var otherRootRef = new Firebase('https://dxc.firebaseio.com/sell/'+ '{{user}}/room');
+		var otherSellRef = new Firebase('https://dxc.firebaseio.com/sell/'+ '{{user}}/room');
     	otherRootRef.on('value', function(snapshot)
     	{
     		if (snapshot.val() != null){

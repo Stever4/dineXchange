@@ -6,8 +6,8 @@
     <script type='text/javascript'>
     function findMatch(place,food)
     {
-        var sellRef = new Firebase('https://dxc.firebaseio.com/sell');
-        sellRef.once('value', function(locationsSnapshot)
+        var buyRef = new Firebase('https://dxc.firebaseio.com/sell');
+        buyRef.once('value', function(locationsSnapshot)
         {
             locationsSnapshot.forEach(function(locationSnapshot)
             {
@@ -20,13 +20,13 @@
                     for(var i=0; i < 20; i++){
                     room += chars.charAt(Math.floor(Math.random() * chars.length));}
 
-                    var sellRef = new Firebase('https://dxc.firebaseio.com/bargains/' + room);
-                    sellRef.child('buyer').set('{{user}}');
-                    sellRef.child('seller').set(name);
-                    sellRef.child('location').set(location);
-                    sellRef.child('food').set(food);
+                    var buyRef = new Firebase('https://dxc.firebaseio.com/bargains/' + room);
+                    buyRef.child('buyer').set('{{user}}');
+                    buyRef.child('seller').set(name);
+                    buyRef.child('location').set(location);
+                    buyRef.child('food').set(food);
                     var sellRef = new Firebase('https://dxc.firebaseio.com/sell/'+name);
-                    sellRef.child('room').set(room);
+                    buyRef.child('room').set(room);
                     window.location = "/bargain?room="+room
                 }
             });
@@ -49,12 +49,12 @@
     </div>
 
 <script type='text/javascript'>
-    window.onload = loadShit();
-    function loadShit()
+    window.onload = load();
+    function load()
     {
         var x = document.getElementById("dropdown");
-        var sellRef = new Firebase('https://dxc.firebaseio.com/sell');
-        sellRef.on('value', function(locationsSnapshot)
+        var buyRef = new Firebase('https://dxc.firebaseio.com/sell');
+        buyRef.on('value', function(locationsSnapshot)
         {
             $("#dropdown").empty();
 
